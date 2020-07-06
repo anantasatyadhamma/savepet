@@ -63,11 +63,11 @@
       ?>
         <tr>
           <td style="text-align: center;"><?php echo $no ?></td>
-          <td></td>
+          <td><?php echo $row->created_date ?></td>
           <td><?php echo $row->nama_hewan ?></td>
           <td><?php echo $row->umur ?></td>
           <td><?php echo $row->jenis ?></td>
-          <td></td>
+          <td><?php echo $row->modified_date ?></td>
           <td id="action" style="border-top: 1px; border-left: 1px; border-right: 1px;">
             <div class="btn" style="background-color: darkcyan;">
               <h7 class="txt-btn">Update</h7>
