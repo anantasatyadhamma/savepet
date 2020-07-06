@@ -62,7 +62,7 @@
       while ($row = $data->fetch(PDO::FETCH_OBJ)) {
       ?>
         <tr>
-          <td><?php echo $no ?></td>
+          <td style="text-align: center;"><?php echo $no ?></td>
           <td></td>
           <td><?php echo $row->nama_hewan ?></td>
           <td><?php echo $row->umur ?></td>
