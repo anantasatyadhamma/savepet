@@ -33,6 +33,9 @@
             <a class="nav-link" href="about.php">About <span class="sr-only">(current)</span></a>
 
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="about.php">Admin</a>
+          </li>
 
 
         </ul>
