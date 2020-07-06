@@ -1,0 +1,115 @@
+#awal {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: darkcyan;
+  width: 100%;
+}
+
+.tulisan-awal {
+  color: white;
+  font-size: 16px;
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+.item-list {
+  width: 250px;
+  height: 250px;
+  background-color: teal;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 30px;
+}
+.isi {
+  padding: 100px 10px 100px 10px;
+  background-color: white;
+}
+.isi-about {
+  padding: 100px 50px 100px 50px;
+  background-color: white;
+}
+
+.gambar {
+  width: 230px;
+  height: 230px;
+  background-color: white;
+  padding: 20px;
+  border-radius: 20px;
+}
+footer {
+  background-color: #343a40;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#footer-1 {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.tulisan-foot {
+  color: white;
+}
+body {
+  background-color: wheat;
+}
+b {
+  color: white;
+}
+.txt_input_adop {
+  height: 30px;
+  width: 500px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  border-color: black;
+  border-width: thin;
+  padding-left: 5px;
+}
+.judul_input {
+  font-size: 17px;
+  margin-bottom: 6px;
+}
+#btn {
+  width: 200px;
+  height: 35px;
+  border-radius: 30px;
+  border-width: 0px;
+  background-color: #343a40;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+}
+#container-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-right: 40px;
+  margin-bottom: 40px;
+}
+#gambar_about {
+  width: 300px;
+  height: 300px;
+  margin-right: 40px;
+}
+.item_about {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+#gambar_about2 {
+  width: 300px;
+  height: 300px;
+  margin-left: 40px;
+}
+
+#gambar_about3 {
+  width: 300px;
+  height: 300px;
+  margin-right: 40px;
+}
