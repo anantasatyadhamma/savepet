@@ -15,6 +15,8 @@ td {
 }
 th {
   text-align: center;
+  background-color: yellowgreen;
+  color: white;
 }
 #action {
   display: flex;
