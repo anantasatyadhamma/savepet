@@ -1,0 +1,48 @@
+#container {
+  height: 35em;
+  width: 30em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: white;
+  border-radius: 10px;
+  margin: 3.5em 0px 0px 0px;
+}
+body {
+  background-color: darkcyan;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#form {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+}
+.txt-input {
+  width: 20em;
+  height: 25px;
+  margin-top: 10px;
+  border-radius: 5px;
+  border: 1px solid;
+}
+.label {
+  font-weight: bold;
+  margin-top: 1em;
+}
+#btn {
+  margin-top: 30px;
+  width: 200px;
+  height: 35px;
+  border-radius: 20px;
+  border: 0px;
+  background-color: teal;
+  color: white;
+  font-size: 15px;
+}
+#container-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
