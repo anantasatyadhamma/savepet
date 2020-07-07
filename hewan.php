@@ -21,4 +21,22 @@ class Hewan
       echo $e->getMessage();
     }
   }
+  public function addImage()
+  {
+    $targetDir = getcwd() . DIRECTORY_SEPARATOR;
+    $fileName = basename($_FILES["file"]["name"]);
+    $targetFilePath = $targetDir . $fileName;
+    $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION);
+
+    $nama = $_POST['nama_lengkap_hewan'];
+    $usia = $_POST['usia_hewan'];
+    $jenis = $_POST['jenis_hewan'];
+    try {
+      $sql = "INSERT into hewan (gambar, tipe_gambar, nama_hewan, umur, jenis, created_date, modified_date) VALUES ('" . $fileName . "', '$fileType', '$nama', '$usia', '$jenis', NOW(), NOW())";
+      $qry = $this->db->query($sql);
+      return $qry;
+    } catch (\Throwable $e) {
+      echo $e->getMessage();
+    }
+  }
 }
