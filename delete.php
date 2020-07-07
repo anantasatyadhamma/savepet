@@ -24,7 +24,7 @@ if ($q == "del") {
   }
 } else if ($q == "del_hewan") {
   $hewan = new Hewan();
-  $hapus = $hewan->hapus($id);
+  $hapus = $hewan->hapus($id, $cdate);
 
   if ($hapus == "Berhasil") {
     $keterangan = "Menghapus data hewan dengan id $id";

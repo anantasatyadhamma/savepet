@@ -21,10 +21,10 @@ class Hewan
       echo $e->getMessage();
     }
   }
-  public function hapus($id_gambar)
+  public function hapus($id_gambar, $ddate)
   {
     try {
-      $sql = "UPDATE hewan set delete_flag = '0' where id_gambar = '$id_gambar'";
+      $sql = "UPDATE hewan set delete_flag = '0', delete_date = '$ddate' where id_gambar = '$id_gambar'";
       $qry = $this->db->query($sql);
 
       if ($qry) {
