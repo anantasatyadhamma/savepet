@@ -34,7 +34,7 @@
 
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="about.php">Admin</a>
+            <a class="nav-link" href="login.php">Admin</a>
           </li>
 
 

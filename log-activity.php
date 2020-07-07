@@ -4,7 +4,6 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <link rel="icon" href="image/logo2.png" type="image/x-icon" />
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
   <link href="css/style-admin.css" rel="stylesheet" />
@@ -21,13 +20,13 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="index.php">Dashboard
-              <span class="sr-only">(current)</span>
+          <li class="nav-item">
+            <a class="nav-link" href="dashboard.php">Dashboard
+
             </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="log-activity.php">Log Aktivitas</a>
+          <li class="nav-item active">
+            <a class="nav-link" href="log-activity.php">Log Aktivitas <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="about.php">Add Data</a>
@@ -42,37 +41,29 @@
       </div>
     </div>
   </nav>
+
   <div class="container-isi">
     <table style="width: 80%; margin-top: 3%;">
       <tr>
-        <th>No</th>
+        <th>ID</th>
+        <th>Keterangan</th>
         <th>Created Date</th>
-        <th>Nama Hewan</th>
-        <th>Umur Hewan</th>
-        <th>Jenis/Ras</th>
-        <th>Modified Date</th>
         <th>Action</th>
       </tr>
       <?php
       include "./hewan.php";
-      $hewan = new Hewan();
-      $data = $hewan->daftarHewan();
+      $hewan = new LogAktivitas();
+      $data = $hewan->list();
       $no = 1;
 
       while ($row = $data->fetch(PDO::FETCH_OBJ)) {
       ?>
         <tr>
-          <td style="text-align: center;"><?php echo $no ?></td>
-          <td><?php echo $row->created_date ?></td>
-          <td><?php echo $row->nama_hewan ?></td>
-          <td><?php echo $row->umur ?></td>
-          <td><?php echo $row->jenis ?></td>
-          <td><?php echo $row->modified_date ?></td>
+          <td><?php echo $row->id ?></td>
+          <td><?php echo $row->keterangan ?></td>
+          <td><?php echo $row->cdate ?></td>
           <td id="action" style="border-top: 1px; border-left: 1px; border-right: 1px;">
-            <div class="btn" style="background-color: darkcyan;">
-              <h7 class="txt-btn">Update</h7>
-            </div>
-            <a href="delete.php?q=del_hewan&id=<?php echo $row->id_gambar; ?>">
+            <a href="delete.php?q=del&id=<?php echo $row->id; ?>">
               <div class="btn" style="background-color: red;">
                 <h7 class="txt-btn">Delete</h7>
               </div>
@@ -86,8 +77,6 @@
       }
       ?>
 
-    </table>
-  </div>
 </body>
 
 </html>

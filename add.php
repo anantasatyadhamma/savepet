@@ -56,10 +56,14 @@
         <input class="txt_input_adop" type="text" placeholder="Jenis/Ras" name="jenis_hewan" />
 
         Select Image File to Upload:
-        <input type="file" name="file">
+        <input type="file" name="file" id="file">
+        <a href="tambah.php?q=tam_hewan" style="margin-top: 30px;">
+          <div class="btn" style="background-color: red;">
+            <h7 class="txt-btn">Upload</h7>
+          </div>
+        </a>
 
-
-        <input type="submit" name="submit" value="Upload" style="margin-top: 30px;">
+        <!-- <div name="submit" value="Upload"  > -->
 
       </form>
 
