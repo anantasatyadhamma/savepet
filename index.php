@@ -17,7 +17,7 @@
 <body>
   <?php
   include('koneksi.php');
-  $query = mysqli_query($koneksi, "SELECT * FROM hewan");
+  $query = mysqli_query($koneksi, "SELECT * FROM hewan WHERE delete_flag ='1'; ");
   ?>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
     <div class="container">
@@ -91,7 +91,7 @@
         ?><div id="container-list">
             <div class="item-list">
               <a href="adopt.php">
-                <img src="image_view.php?id_gambar=<?php echo $row['id_gambar']; ?>" class="gambar" />
+                <img src="upload/<?php echo $row['gambar']; ?>" class="gambar" />
               </a>
             </div>
 

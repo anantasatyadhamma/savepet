@@ -57,11 +57,12 @@
 
         Select Image File to Upload:
         <input type="file" name="file" id="file">
-        <a href="tambah.php?q=tam_hewan" style="margin-top: 30px;">
-          <div class="btn" style="background-color: red;">
-            <h7 class="txt-btn">Upload</h7>
-          </div>
-        </a>
+
+
+        <div style="display: flex; justify-content: center; align-items: center;"><input type="submit" name="submit" class="btn" /></div>
+
+
+
 
         <!-- <div name="submit" value="Upload"  > -->
 

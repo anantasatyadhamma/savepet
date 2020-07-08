@@ -31,6 +31,21 @@ class Hewan
       echo $e->getMessage();
     }
   }
+  public function addImage($id, $nama, $umur, $jenis, $pathname, $fileType, $cdate, $mdate,  $ddate)
+  {
+    try {
+      $sql = "INSERT into hewan (id_gambar, gambar, tipe_gambar, nama_hewan, umur, jenis, created_date, modified_date, delete_date, delete_flag) VALUES ('$id','$pathname', '$fileType', '$nama', '$umur', '$jenis', '$cdate', '$mdate','$ddate', '1')";
+      $qry = $this->db->query($sql);
+      if ($qry) {
+        return "Berhasil";
+      } else {
+        return "Gagal";
+      }
+      return $qry;
+    } catch (\Throwable $e) {
+      echo $e->getMessage();
+    }
+  }
 
 
   public function hapus($id_gambar, $ddate)
