@@ -45,33 +45,26 @@
     </div>
   </nav>
   <?php
-  session_start();
+  require "hewan.php";
   $id = $_GET['id'];
-  include "./hewan.php";
   $hewan = new Hewan();
-  $data = $hewan->editHewan($id);
-  $row = $data->fetch(PDO::FETCH_OBJ);
+  $lihat = $hewan->lihat($id);
+  $isi = $lihat->fetch(PDO::FETCH_OBJ);
   ?>
   <div id="container">
     <div id="card">
       <h2>EDIT</h2>
-      <form style="margin-top: 20px; flex-direction: column; display: flex;" action="edit-aksi.php" method="POST" enctype="multipart/form-data">
+      <form style="margin-top: 20px; flex-direction: column; display: flex;" action="update.php?q=update&id=<?php echo $isi->id_gambar; ?>" method="POST" enctype="multipart/form-data">
         <b class="judul_input">Nama Lengkap</b>
-        <input class="txt_input_adop" type="text" placeholder="Nama hewan" name="nama_lengkap_hewan" value="<?php echo $row->nama_hewan ?>" />
+        <input class="txt_input_adop" type="text" placeholder="Nama hewan" name="nama_lengkap_hewan" value="<?php echo $isi->nama_hewan ?>" />
         <b class="judul_input">Umur</b>
-        <input class="txt_input_adop" type="text" placeholder="Usia" name="usia_hewan" value="<?php echo $row->umur ?>" />
+        <input class="txt_input_adop" type="text" placeholder="Usia" name="usia_hewan" value="<?php echo $isi->umur ?>" />
         <b class="judul_input">Jenis/Ras</b>
-        <input class="txt_input_adop" type="text" placeholder="Jenis/Ras" name="jenis_hewan" value="<?php echo $row->jenis ?>" />
+        <input class="txt_input_adop" type="text" placeholder="Jenis/Ras" name="jenis_hewan" value="<?php echo $isi->jenis ?>" />
 
         Select Image File to Upload:
         <input type="file" name="file" id="file">
-        <a href="tambah.php?q=tam_hewan" style="margin-top: 30px;">
-          <div class="btn" style="background-color: red;">
-            <h7 class="txt-btn">Upload</h7>
-          </div>
-        </a>
-
-        <!-- <div name="submit" value="Upload"  > -->
+        <div style="display: flex; align-items: center; justify-content: center;"><button type="submit" name="submit" class="btn">Submit</button></div>
 
       </form>
 

@@ -31,52 +31,7 @@ class Hewan
       echo $e->getMessage();
     }
   }
-  public function addImage()
-  {
-    $targetDir = getcwd() . DIRECTORY_SEPARATOR;
-    $fileName = basename($_FILES["file"]["name"]);
-    $targetFilePath = $targetDir . $fileName;
-    $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION);
 
-    $nama = $_POST['nama_lengkap_hewan'];
-    $usia = $_POST['usia_hewan'];
-    $jenis = $_POST['jenis_hewan'];
-    try {
-      $sql = "INSERT into hewan (gambar, tipe_gambar, nama_hewan, umur, jenis, created_date, modified_date) VALUES ('$fileName', '$fileType', '$nama', '$usia', '$jenis', NOW(), NOW())";
-      $qry = $this->db->query($sql);
-      if ($qry) {
-        return "Berhasil";
-      } else {
-        return "Gagal";
-      }
-      return $qry;
-    } catch (\Throwable $e) {
-      echo $e->getMessage();
-    }
-  }
-  public function update1($id, $cdate)
-  {
-    $targetDir = getcwd() . DIRECTORY_SEPARATOR;
-    $fileName = basename($_FILES["file"]["name"]);
-    $targetFilePath = $targetDir . $fileName;
-    $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION);
-
-    $nama = $_POST['nama_lengkap_hewan'];
-    $usia = $_POST['usia_hewan'];
-    $jenis = $_POST['jenis_hewan'];
-    try {
-      $sql = "UPDATE hewan SET gambar = '$fileName', tipe_gambar = '$fileType', nama_hewan = '$nama', umur = '$usia', jenis = '$jenis', modified_date = '$cdate' WHERE id_gambar = $id";
-      $qry = $this->db->query($sql);
-      if ($qry) {
-        return "update berhasil";
-      } else {
-        return "Gagal";
-      }
-      return $qry;
-    } catch (\Throwable $e) {
-      echo $e->getMessage();
-    }
-  }
 
   public function hapus($id_gambar, $ddate)
   {
@@ -91,6 +46,54 @@ class Hewan
       }
       return $qry;
     } catch (\Throwable $e) {
+      echo $e->getMessage();
+    }
+  }
+  public function update($nama, $umur, $jenis, $pathname, $id, $fileType, $mdate)
+  {
+    try {
+      $sql = "UPDATE hewan SET nama_hewan = '$nama', umur = '$umur', jenis = '$jenis', gambar = '$pathname', tipe_gambar = '$fileType', modified_date = '$mdate' WHERE id_gambar = '$id'";
+      $qry = $this->db->query($sql);
+      if ($qry) {
+        return "Berhasil";
+      } else {
+        return "Gagal";
+      }
+    } catch (PDOException $e) {
+      echo $e->getMessage();
+    }
+  }
+  public function update2($nama, $umur, $jenis, $mdate, $id)
+  {
+    try {
+      $sql = "UPDATE hewan SET nama_hewan = '$nama', umur = '$umur', jenis = '$jenis', modified_date = '$mdate' WHERE id_gambar = '$id'";
+      $qry = $this->db->query($sql);
+      if ($sql) {
+        return "Berhasil";
+      } else {
+        return "Gagal";
+      }
+    } catch (PDOException $e) {
+      echo $e->getMessage();
+    }
+  }
+  public function desc_id()
+  {
+    try {
+      $sql = "SELECT *FROM hewan ORDER BY id_gambar DESC LIMIT 1";
+      $qry = $this->db->query($sql);
+      return $qry;
+    } catch (PDOException $e) {
+      echo $e->getMessage();
+    }
+  }
+  public function lihat($id)
+  {
+    try {
+      $sql = "SELECT *FROM hewan WHERE id_gambar = '$id' and delete_flag='1'";
+      $qry = $this->db->query($sql);
+      return $qry;
+    } catch (PDOException $e) {
       echo $e->getMessage();
     }
   }

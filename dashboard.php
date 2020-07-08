@@ -69,7 +69,7 @@
           <td><?php echo $row->jenis ?></td>
           <td><?php echo $row->modified_date ?></td>
           <td id="action" style="border-top: 1px; border-left: 1px; border-right: 1px;">
-            <a href="edit.php?q=edit_hewan&id=<?php echo $row->id_gambar; ?>">
+            <a href="edit.php?q=update&id=<?php echo $row->id_gambar; ?>">
               <div class="btn" style="background-color: darkcyan;">
                 <h7 class="txt-btn">Update</h7>
               </div>
