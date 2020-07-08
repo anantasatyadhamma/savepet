@@ -29,7 +29,7 @@
             <a class="nav-link" href="log-activity.php">Log Aktivitas <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="about.php">Add Data</a>
+            <a class="nav-link" href="add.php">Add Data</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="about.php">Sampah</a>

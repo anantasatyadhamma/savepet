@@ -21,6 +21,16 @@ class Hewan
       echo $e->getMessage();
     }
   }
+  public function editHewan($id)
+  {
+    try {
+      $sql = "SELECT * FROM hewan WHERE delete_flag = 1 && id_gambar = $id";
+      $qry = $this->db->query($sql);
+      return $qry;
+    } catch (\Throwable $e) {
+      echo $e->getMessage();
+    }
+  }
   public function addImage()
   {
     $targetDir = getcwd() . DIRECTORY_SEPARATOR;
@@ -44,10 +54,34 @@ class Hewan
       echo $e->getMessage();
     }
   }
-  public function hapus($id_gambar)
+  public function update1($id, $cdate)
+  {
+    $targetDir = getcwd() . DIRECTORY_SEPARATOR;
+    $fileName = basename($_FILES["file"]["name"]);
+    $targetFilePath = $targetDir . $fileName;
+    $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION);
+
+    $nama = $_POST['nama_lengkap_hewan'];
+    $usia = $_POST['usia_hewan'];
+    $jenis = $_POST['jenis_hewan'];
+    try {
+      $sql = "UPDATE hewan SET gambar = '$fileName', tipe_gambar = '$fileType', nama_hewan = '$nama', umur = '$usia', jenis = '$jenis', modified_date = '$cdate' WHERE id_gambar = $id";
+      $qry = $this->db->query($sql);
+      if ($qry) {
+        return "update berhasil";
+      } else {
+        return "Gagal";
+      }
+      return $qry;
+    } catch (\Throwable $e) {
+      echo $e->getMessage();
+    }
+  }
+
+  public function hapus($id_gambar, $ddate)
   {
     try {
-      $sql = "UPDATE hewan set delete_flag = '0' where id_gambar = '$id_gambar'";
+      $sql = "UPDATE hewan set delete_flag = '0', delete_date = '$ddate' where id_gambar = '$id_gambar'";
       $qry = $this->db->query($sql);
 
       if ($qry) {

@@ -20,18 +20,18 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
+          <li class="nav-item active">
             <a class="nav-link" href="dashboard.php">Dashboard
-
+              <span class="sr-only">(current)</span>
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="log-activity.php">Log Aktivitas
             </a>
           </li>
-          <li class="nav-item active">
+          <li class="nav-item">
             <a class="nav-link" href="add.php">Add Data
-              <span class="sr-only">(current)</span>
+
             </a>
           </li>
           <li class="nav-item">
@@ -44,16 +44,24 @@
       </div>
     </div>
   </nav>
+  <?php
+  session_start();
+  $id = $_GET['id'];
+  include "./hewan.php";
+  $hewan = new Hewan();
+  $data = $hewan->editHewan($id);
+  $row = $data->fetch(PDO::FETCH_OBJ);
+  ?>
   <div id="container">
     <div id="card">
-      <h2>Upload</h2>
-      <form style="margin-top: 20px; flex-direction: column; display: flex;" action="add-image.php" method="POST" enctype="multipart/form-data">
+      <h2>EDIT</h2>
+      <form style="margin-top: 20px; flex-direction: column; display: flex;" action="edit-aksi.php" method="POST" enctype="multipart/form-data">
         <b class="judul_input">Nama Lengkap</b>
-        <input class="txt_input_adop" type="text" placeholder="Nama hewan" name="nama_lengkap_hewan" />
+        <input class="txt_input_adop" type="text" placeholder="Nama hewan" name="nama_lengkap_hewan" value="<?php echo $row->nama_hewan ?>" />
         <b class="judul_input">Umur</b>
-        <input class="txt_input_adop" type="text" placeholder="Usia" name="usia_hewan" />
+        <input class="txt_input_adop" type="text" placeholder="Usia" name="usia_hewan" value="<?php echo $row->umur ?>" />
         <b class="judul_input">Jenis/Ras</b>
-        <input class="txt_input_adop" type="text" placeholder="Jenis/Ras" name="jenis_hewan" />
+        <input class="txt_input_adop" type="text" placeholder="Jenis/Ras" name="jenis_hewan" value="<?php echo $row->jenis ?>" />
 
         Select Image File to Upload:
         <input type="file" name="file" id="file">
