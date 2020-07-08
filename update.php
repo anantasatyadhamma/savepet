@@ -2,6 +2,7 @@
 session_start();
 $q = $_GET['q'];
 $id_get = $_GET['id'];
+$nama = $_GET['nama'];
 // waktu dan tanggal
 date_default_timezone_set("Asia/Jakarta");
 $cdate = date("y-m-d H:i:s");
@@ -36,7 +37,7 @@ if ($q == "update") {
     if (empty($fileName)) {
       $upd_noPicture = $hewan->update2($nama, $usia, $jenis, $cdate, $id_get);
       if ($upd_noPicture == "Berhasil") {
-        $keterangan = "Meng-update data hewan dengan id $id_get";
+        $keterangan = "Meng-update data hewan dengan id $id_get, dan nama hewan $nama";
         $input_log = $log->tambah($idlog, $keterangan, $cdate);
         header('location:dashboard.php');
         $_SESSION['pesan'] = 'sukses';
@@ -48,7 +49,7 @@ if ($q == "update") {
       if (move_uploaded_file($tmp_file, $path)) {
         $update = $hewan->update($nama, $usia, $jenis, $fileName, $id_get, $fileType, $cdate);
         if ($update == "Berhasil") {
-          $keterangan = "Meng-update data hewan dengan id $id_get";
+          $keterangan = "Meng-update data hewan dengan id $id_get, dan nama hewan $nama";
           $input_log = $log->tambah($idlog, $keterangan, $cdate);
           header('location: dashboard.php');
           $_SESSION['pesan'] = 'sukses';
@@ -68,7 +69,7 @@ if ($q == "update") {
 
   $update = $hewan->restore($id_get);
   if ($update == "Berhasil") {
-    $keterangan = "Restore data hewan dengan id $id_get";
+    $keterangan = "Restore data hewan dengan id $id_get, nama hewan $nama";
     $input_log = $log->tambah($idlog, $keterangan, $cdate);
     header('location: dashboard.php');
     $_SESSION['pesan'] = 'sukses';

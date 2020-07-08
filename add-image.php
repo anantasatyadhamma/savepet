@@ -2,6 +2,7 @@
 session_start();
 date_default_timezone_set("Asia/Jakarta");
 $cdate = date("y-m-d H:i:s");
+$nama = $_POST['nama_lengkap_hewan'];
 
 require "hewan.php";
 $log = new LogAktivitas();
@@ -35,7 +36,7 @@ if (isset($_POST['submit'])) {
   if (move_uploaded_file($tmp_file, $path)) {
     $update = $hewan->addImage($id, $nama, $usia, $jenis, $fileName, $type_file, $cdate, $cdate, '0000-00-00 00:00:00');
     if ($update == "Berhasil") {
-      $keterangan = "Meng-upload data hewan";
+      $keterangan = "Meng-upload data hewan dengan nama $nama";
       $input_log = $log->tambah($idlog, $keterangan, $cdate);
       header('location: dashboard.php');
       $_SESSION['pesan'] = 'sukses';

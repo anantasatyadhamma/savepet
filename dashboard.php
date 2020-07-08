@@ -33,6 +33,9 @@
             <a class="nav-link" href="add.php">Add Data</a>
           </li>
           <li class="nav-item">
+            <a class="nav-link" href="kelola-adopsi.php">Kelola Adopsi</a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link" href="trash.php">Sampah</a>
           </li>
           <li class="nav-item">
@@ -69,12 +72,12 @@
           <td><?php echo $row->jenis ?></td>
           <td><?php echo $row->modified_date ?></td>
           <td id="action" style="border-top: 1px; border-left: 1px; border-right: 1px;">
-            <a href="edit.php?q=update&id=<?php echo $row->id_gambar; ?>">
+            <a href="edit.php?q=update&id=<?php echo $row->id_gambar; ?>&nama=<?php echo $row->nama_hewan ?>">
               <div class="btn" style="background-color: darkcyan;">
                 <h7 class="txt-btn">Update</h7>
               </div>
             </a>
-            <a href="delete.php?q=del_hewan&id=<?php echo $row->id_gambar; ?>">
+            <a href="delete.php?q=del_hewan&id=<?php echo $row->id_gambar; ?>&nama=<?php echo $row->nama_hewan ?>">
               <div class="btn" style="background-color: red;">
                 <h7 class="txt-btn">Delete</h7>
               </div>

@@ -32,6 +32,9 @@
             <a class="nav-link" href="add.php">Add Data</a>
           </li>
           <li class="nav-item">
+            <a class="nav-link" href="kelola-adopsi.php">Kelola Adopsi</a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link" href="trash.php">Sampah</a>
           </li>
           <li class="nav-item">
@@ -76,6 +79,7 @@
         $no++;
       }
       ?>
+  </div>
 
 </body>
 

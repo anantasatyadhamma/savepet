@@ -2,6 +2,7 @@
 session_start();
 $q = $_GET['q'];
 $id = $_GET['id'];
+$nama = $_GET['nama'];
 date_default_timezone_set("Asia/Jakarta");
 $cdate = date("y-m-d H:i:s");
 
@@ -27,7 +28,7 @@ if ($q == "del") {
   $hapus = $hewan->hapus($id, $cdate);
 
   if ($hapus == "Berhasil") {
-    $keterangan = "Menghapus data hewan dengan id $id";
+    $keterangan = "Menghapus data hewan dengan id $id, nama hewan $nama";
     $input_log = $log->tambah($idlog, $keterangan, $cdate);
     header('location: dashboard.php');
     $_SESSION['pesan'] = 'sukses';
@@ -40,7 +41,7 @@ if ($q == "del") {
   $hapus = $hewan->hapusTrash($id);
 
   if ($hapus == "Berhasil") {
-    $keterangan = "Menghapus trash dengan id $id";
+    $keterangan = "Menghapus trash dengan id $id, nama hewan $nama";
     $input_log = $log->tambah($idlog, $keterangan, $cdate);
     header('location: trash.php');
     $_SESSION['pesan'] = 'sukses';
@@ -59,6 +60,19 @@ if ($q == "del") {
     $_SESSION['pesan'] = 'sukses';
   } else {
     header('location: trash.php');
+    $_SESSION['pesan'] = 'eror';
+  }
+} else if ($q == "del-adopt") {
+  $hewan = new Hewan();
+  $hapus = $hewan->hapus_adopt($id);
+
+  if ($hapus == "Berhasil") {
+    $keterangan = "Menghapus data adopsi hewan dengan id $id dan atas nama $nama";
+    $input_log = $log->tambah($idlog, $keterangan, $cdate);
+    header('location: kelola-adopsi.php');
+    $_SESSION['pesan'] = 'sukses';
+  } else {
+    header('location: dashboard.php');
     $_SESSION['pesan'] = 'eror';
   }
 }

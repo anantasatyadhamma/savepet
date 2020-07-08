@@ -168,6 +168,32 @@ class Hewan
       echo $e->getMessage();
     }
   }
+  public function getAdopsi()
+  {
+    try {
+      $sql = "SELECT *FROM adopsi ORDER BY id DESC";
+      $qry = $this->db->query($sql);
+      return $qry;
+    } catch (PDOException $e) {
+      echo $e->getMessage();
+    }
+  }
+  public function hapus_adopt($id)
+  {
+    try {
+      $sql = "DELETE FROM adopsi where id = '$id'";
+      $qry = $this->db->query($sql);
+
+      if ($qry) {
+        return "Berhasil";
+      } else {
+        return "Gagal";
+      }
+      return $qry;
+    } catch (\Throwable $e) {
+      echo $e->getMessage();
+    }
+  }
 }
 
 class LogAktivitas
