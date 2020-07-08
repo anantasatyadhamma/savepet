@@ -35,10 +35,10 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="about.php">Sampah</a>
+            <a class="nav-link" href="trash.php">Sampah</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="about.php">Logout</a>
+            <a class="nav-link" href="proses_log.php?q=out">Logout</a>
           </li>
         </ul>
       </div>

@@ -35,4 +35,30 @@ if ($q == "del") {
     header('location: dashboard.php');
     $_SESSION['pesan'] = 'eror';
   }
+} else if ($q == "del_trash") {
+  $hewan = new Hewan();
+  $hapus = $hewan->hapusTrash($id);
+
+  if ($hapus == "Berhasil") {
+    $keterangan = "Menghapus trash dengan id $id";
+    $input_log = $log->tambah($idlog, $keterangan, $cdate);
+    header('location: trash.php');
+    $_SESSION['pesan'] = 'sukses';
+  } else {
+    header('location: trash.php');
+    $_SESSION['pesan'] = 'eror';
+  }
+} else if ($q == "del_trash_all") {
+  $hewan = new Hewan();
+  $hapus = $hewan->hapusTrashALL();
+
+  if ($hapus == "Berhasil") {
+    $keterangan = "Menghapus semua trash";
+    $input_log = $log->tambah($idlog, $keterangan, $cdate);
+    header('location: trash.php');
+    $_SESSION['pesan'] = 'sukses';
+  } else {
+    header('location: trash.php');
+    $_SESSION['pesan'] = 'eror';
+  }
 }

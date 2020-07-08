@@ -21,6 +21,16 @@ class Hewan
       echo $e->getMessage();
     }
   }
+  public function trash()
+  {
+    try {
+      $sql = "SELECT * FROM hewan WHERE delete_flag = 0";
+      $qry = $this->db->query($sql);
+      return $qry;
+    } catch (\Throwable $e) {
+      echo $e->getMessage();
+    }
+  }
   public function editHewan($id)
   {
     try {
@@ -46,12 +56,58 @@ class Hewan
       echo $e->getMessage();
     }
   }
-
+  public function restore($id)
+  {
+    try {
+      $sql = "UPDATE hewan SET delete_flag = '1' WHERE id_gambar = $id";
+      $qry = $this->db->query($sql);
+      if ($qry) {
+        return "Berhasil";
+      } else {
+        return "Gagal";
+      }
+      return $qry;
+    } catch (\Throwable $e) {
+      echo $e->getMessage();
+    }
+  }
 
   public function hapus($id_gambar, $ddate)
   {
     try {
       $sql = "UPDATE hewan set delete_flag = '0', delete_date = '$ddate' where id_gambar = '$id_gambar'";
+      $qry = $this->db->query($sql);
+
+      if ($qry) {
+        return "Berhasil";
+      } else {
+        return "Gagal";
+      }
+      return $qry;
+    } catch (\Throwable $e) {
+      echo $e->getMessage();
+    }
+  }
+  public function hapusTrash($id_gambar)
+  {
+    try {
+      $sql = "DELETE FROM hewan WHERE (delete_flag = '0' AND id_gambar = '$id_gambar')";
+      $qry = $this->db->query($sql);
+
+      if ($qry) {
+        return "Berhasil";
+      } else {
+        return "Gagal";
+      }
+      return $qry;
+    } catch (\Throwable $e) {
+      echo $e->getMessage();
+    }
+  }
+  public function hapusTrashALL()
+  {
+    try {
+      $sql = "DELETE FROM hewan WHERE delete_flag = '0'";
       $qry = $this->db->query($sql);
 
       if ($qry) {

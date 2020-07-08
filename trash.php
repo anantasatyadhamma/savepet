@@ -21,9 +21,9 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item active">
+          <li class="nav-item">
             <a class="nav-link" href="dashboard.php">Dashboard
-              <span class="sr-only">(current)</span>
+
             </a>
           </li>
           <li class="nav-item">
@@ -32,8 +32,10 @@
           <li class="nav-item">
             <a class="nav-link" href="add.php">Add Data</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="trash.php">Sampah</a>
+          <li class="nav-item active"">
+            <a class=" nav-link" href="trash.php">Sampah
+            <span class="sr-only">(current)</span>
+            </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="proses_log.php?q=out">Logout</a>
@@ -42,39 +44,45 @@
       </div>
     </div>
   </nav>
+  <div style="display: flex; justify-content: flex-end; width: '100%'; background-color: black; align-items: flex-end; padding: 40px 150px 20px 0px;">
+    <a href="delete.php?q=del_trash_all">
+      <div class="btn" style="background-color: red;">
+        <h7 class="txt-btn">Delete All</h7>
+      </div>
+    </a>
+  </div>
   <div class="container-isi">
+
     <table style="width: 80%; margin-top: 3%;">
       <tr>
         <th>No</th>
-        <th>Created Date</th>
         <th>Nama Hewan</th>
         <th>Umur Hewan</th>
         <th>Jenis/Ras</th>
-        <th>Modified Date</th>
+        <th>Delete Date</th>
         <th>Action</th>
       </tr>
       <?php
       include "./hewan.php";
       $hewan = new Hewan();
-      $data = $hewan->daftarHewan();
+      $data = $hewan->trash();
       $no = 1;
 
       while ($row = $data->fetch(PDO::FETCH_OBJ)) {
       ?>
         <tr>
           <td style="text-align: center;"><?php echo $no ?></td>
-          <td><?php echo $row->created_date ?></td>
           <td><?php echo $row->nama_hewan ?></td>
           <td><?php echo $row->umur ?></td>
           <td><?php echo $row->jenis ?></td>
-          <td><?php echo $row->modified_date ?></td>
+          <td><?php echo $row->delete_date ?></td>
           <td id="action" style="border-top: 1px; border-left: 1px; border-right: 1px;">
-            <a href="edit.php?q=update&id=<?php echo $row->id_gambar; ?>">
+            <a href="update.php?q=restore&id=<?php echo $row->id_gambar; ?>">
               <div class="btn" style="background-color: darkcyan;">
-                <h7 class="txt-btn">Update</h7>
+                <h7 class="txt-btn">Restore</h7>
               </div>
             </a>
-            <a href="delete.php?q=del_hewan&id=<?php echo $row->id_gambar; ?>">
+            <a href="delete.php?q=del_trash&id=<?php echo $row->id_gambar; ?>">
               <div class="btn" style="background-color: red;">
                 <h7 class="txt-btn">Delete</h7>
               </div>

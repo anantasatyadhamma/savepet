@@ -59,4 +59,21 @@ if ($q == "update") {
       }
     }
   }
+} else if ($q = 'restore') {
+  $hewan = new Hewan();
+  $qry_id = $hewan->desc_id();
+  $fch_id = $qry_id->fetch(PDO::FETCH_OBJ);
+  $id_fch = $fch_id->id;
+  $id = $id_fch + 1;
+
+  $update = $hewan->restore($id_get);
+  if ($update == "Berhasil") {
+    $keterangan = "Restore data hewan dengan id $id_get";
+    $input_log = $log->tambah($idlog, $keterangan, $cdate);
+    header('location: dashboard.php');
+    $_SESSION['pesan'] = 'sukses';
+  } else {
+    header('location: log-activity.php');
+    $_SESSION['pesan'] = 'eror';
+  }
 }
